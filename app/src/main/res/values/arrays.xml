@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="exercise">
+        <item>One|20|6d32b7cc125b69106c6502c4023338fd.gif</item> <!--0-->
+        <item>Two|30|603aea452ed0dbd33dbb2ef4ce745b05.gif</item><!--1-->
+        <item>Tree|30|752a1458f6e51663bd63d4293dc9b428.gif</item><!--2-->
+        <item>Four|x15|D8QZ.gif</item><!--3-->
+        <item>Five|x15|One-Arm-Dumbbell-Row-1.gif</item><!--4-->
+        <item>Six|x10|orig.gif</item><!--5-->
+        <item>Seven|20|orig (1).gif</item><!--6-->
+        <item>Relax|30|chilldog.gif</item><!--7-->
+    </string-array>
+    <string-array name="day_exercises">
+        <item>0,7,3,7,5,7,1,7,4,7,5</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+        <item>0,7,3,7,5,7,1,7,4,7,5,7,2,7,6</item>
+    </string-array>
+</resources>
