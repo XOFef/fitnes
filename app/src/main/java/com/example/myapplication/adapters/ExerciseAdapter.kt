@@ -9,15 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.DaysListItemBinding
 import com.example.myapplication.databinding.ExerciseListItemBinding
+import pl.droidsonroids.gif.GifDrawable
 
 class ExerciseAdapter() : ListAdapter<ExerciseModel, ExerciseAdapter.ExerciseHolder>(MyComparator()){
 
     class ExerciseHolder(view: View) : RecyclerView.ViewHolder(view){
         private val binding = ExerciseListItemBinding.bind(view)
         fun setData(exercise: ExerciseModel) = with(binding){
-          tvName2.text = exercise.name
-          tvCount.text = exercise.time
-
+            tvName2.text = exercise.name
+            tvCount.text = exercise.time
+            imEx.setImageDrawable(GifDrawable(root.context.assets, exercise.image))
         }
     }
 

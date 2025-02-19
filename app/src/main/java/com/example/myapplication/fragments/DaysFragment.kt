@@ -57,7 +57,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
         day.exercises.split(",").forEach{
             val exerciseList = resources.getStringArray(R.array.exercise)
             val exercise = exerciseList[it.toInt()]
-            val exerciseArray = exercise.split("|")
+            val exerciseArray = exercise.split(",")
             tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], exerciseArray[2]))
         }
         model.mutableListExercise.value = tempList
@@ -69,6 +69,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
     }
 
     override fun onClick(day: DayModel) {
+        fillExerciseList(day  )
         FragmentManager.setFragment(ExerciseListFragment.newInstance(), activity as AppCompatActivity)
     }
 }

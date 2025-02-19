@@ -3,4 +3,5 @@
     <string name="slogan">На пути к совершенству!</string>
     <string name="day">День:</string>
     <string name="exercise">Упражнений</string>
+    <string name="waiting_message">Упражнения начнуться через:</string>
 </resources>
