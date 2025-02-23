@@ -1,18 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="colorSecondary">@color/purple</item>
+        <item name="colorPrimary">@color/purple</item>
     </style>
 
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication">
+    <style name="Theme.MyApplication" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:fitsSystemWindows">true</item>
-        <item name="colorSecondary">@color/blue</item>
-        <item name="colorPrimary">@color/purple</item>
+        <item name="colorSecondary">@color/purple</item>
+        <item name="colorPrimary">@color/purple_bar</item>
     </style>
 
     <style name="Theme.Splash" parent="Base.Theme.MyApplication">
         <item name="android:windowFullscreen">true</item>
     </style>
+
+
+
+
+
+
+
+
 
 </resources>

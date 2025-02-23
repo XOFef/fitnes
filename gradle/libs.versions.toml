@@ -1,5 +1,6 @@
 [versions]
 agp = "8.8.1"
+androidGifDrawable = "1.2.29"
 fragmentKtx = "1.8.6"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
@@ -10,8 +11,10 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.1.4"
+compose = "1.0.0-alpha02"
 
 [libraries]
+android-gif-drawable = { module = "pl.droidsonroids.gif:android-gif-drawable", version.ref = "androidGifDrawable" }
 android-gif-drawable_x-x-x3 = { module = "pl.droidsonroids.gif:android-gif-drawable;1.2.23" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
@@ -22,6 +25,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-compose = { group = "androidx.xr.compose", name = "compose", version.ref = "compose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -9,21 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.DaysListItemBinding
 
-class DaysAdapter(var listener: Listener) : ListAdapter<DayModel, DaysAdapter.DayHolder>(MyComparator()){
+class DaysAdapter(var listener: Listener) :
+    ListAdapter<DayModel, DaysAdapter.DayHolder>(MyComparator()) {
 
-    class DayHolder(view: View) : RecyclerView.ViewHolder(view){
+    class DayHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = DaysListItemBinding.bind(view)
-        fun setData(day: DayModel, listener: Listener) = with(binding){
-          val name = root.context.getString(R.string.day) + " ${adapterPosition + 1}"
-          tvName.text = name
-          val exCounter = day.exercises.split(",").size.toString() + " " + root.context.getString(R.string.exercise)
-          tvExCounter.text = exCounter
-            itemView.setOnClickListener{listener.onClick(day)}
+        fun setData(day: DayModel, listener: Listener) = with(binding) {
+            val name = root.context.getString(R.string.day) + " ${adapterPosition + 1}"
+            tvName.text = name
+            val exCounter =
+                day.exercises.split(",").size.toString() + " " + root.context.getString(R.string.exercise)
+            tvExCounter.text = exCounter
+            checkBox.isChecked = day.isDone
+            itemView.setOnClickListener { listener.onClick(day.copy(dayNumber = adapterPosition + 1)) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.days_list_item, parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.days_list_item, parent, false)
         return DayHolder(view)
     }
 
@@ -31,7 +35,7 @@ class DaysAdapter(var listener: Listener) : ListAdapter<DayModel, DaysAdapter.Da
         holder.setData(getItem(position), listener)
     }
 
-    class MyComparator : DiffUtil.ItemCallback<DayModel>(){
+    class MyComparator : DiffUtil.ItemCallback<DayModel>() {
         override fun areItemsTheSame(oldItem: DayModel, newItem: DayModel): Boolean {
             return oldItem == newItem
         }
@@ -42,7 +46,7 @@ class DaysAdapter(var listener: Listener) : ListAdapter<DayModel, DaysAdapter.Da
 
     }
 
-    interface Listener{
+    interface Listener {
         fun onClick(day: DayModel)
     }
 }

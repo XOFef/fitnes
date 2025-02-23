@@ -11,19 +11,22 @@ import com.example.myapplication.databinding.DaysListItemBinding
 import com.example.myapplication.databinding.ExerciseListItemBinding
 import pl.droidsonroids.gif.GifDrawable
 
-class ExerciseAdapter() : ListAdapter<ExerciseModel, ExerciseAdapter.ExerciseHolder>(MyComparator()){
+class ExerciseAdapter() :
+    ListAdapter<ExerciseModel, ExerciseAdapter.ExerciseHolder>(MyComparator()) {
 
-    class ExerciseHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ExerciseHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ExerciseListItemBinding.bind(view)
-        fun setData(exercise: ExerciseModel) = with(binding){
+        fun setData(exercise: ExerciseModel) = with(binding) {
             tvName2.text = exercise.name
             tvCount.text = exercise.time
             imEx.setImageDrawable(GifDrawable(root.context.assets, exercise.image))
+            chB.isChecked = exercise.isDone
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.exercise_list_item, parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.exercise_list_item, parent, false)
         return ExerciseHolder(view)
     }
 
@@ -31,7 +34,7 @@ class ExerciseAdapter() : ListAdapter<ExerciseModel, ExerciseAdapter.ExerciseHol
         holder.setData(getItem(position))
     }
 
-    class MyComparator : DiffUtil.ItemCallback<ExerciseModel>(){
+    class MyComparator : DiffUtil.ItemCallback<ExerciseModel>() {
         override fun areItemsTheSame(oldItem: ExerciseModel, newItem: ExerciseModel): Boolean {
             return oldItem == newItem
         }
