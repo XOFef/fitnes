@@ -10,7 +10,10 @@ import androidx.fragment.app.activityViewModels
 import com.example.myapplication.fragments.DaysFragment
 import com.example.myapplication.utils.FragmentManager
 import com.example.myapplication.utils.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val model: MainViewModel by viewModels()
 

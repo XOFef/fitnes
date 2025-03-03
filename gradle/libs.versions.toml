@@ -1,9 +1,11 @@
 [versions]
-agp = "8.8.1"
+agp = "8.8.2"
 androidGifDrawable = "1.2.29"
-fragmentKtx = "1.8.6"
-kotlin = "1.9.0"
-coreKtx = "1.15.0"
+fragmentKtx = "1.6.1"
+
+hiltCompiler = "2.46.1"
+kotlin = "1.8.0"
+coreKtx = "1.10.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -12,12 +14,18 @@ material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.1.4"
 compose = "1.0.0-alpha02"
+roomRuntime = "2.6.1"
+symbolProcessingApi = "<latest-version>"
 
 [libraries]
 android-gif-drawable = { module = "pl.droidsonroids.gif:android-gif-drawable", version.ref = "androidGifDrawable" }
-android-gif-drawable_x-x-x3 = { module = "pl.droidsonroids.gif:android-gif-drawable;1.2.23" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -26,6 +34,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-compose = { group = "androidx.xr.compose", name = "compose", version.ref = "compose" }
+symbol-processing-api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "symbolProcessingApi" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,6 +1,5 @@
 package com.example.myapplication.fragments
 
-import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
-import com.example.myapplication.adapters.DayModel
+import com.example.myapplication.db.DayModel
 import com.example.myapplication.adapters.DaysAdapter
-import com.example.myapplication.adapters.ExerciseModel
+import com.example.myapplication.db.ExerciseModel
 import com.example.myapplication.databinding.FragmentDaysBinding
 import com.example.myapplication.utils.FragmentManager
 import com.example.myapplication.utils.MainViewModel
