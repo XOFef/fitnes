@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.DayFinishBinding
+import com.example.myapplication.training.ui.fragments.DaysFragment
 import com.example.myapplication.utils.FragmentManager
 import pl.droidsonroids.gif.GifDrawable
 
@@ -37,7 +38,7 @@ class DayFinishFragment : Fragment() {
             )
         )
         binding.bDone.setOnClickListener {
-            FragmentManager.setFragment(DaysFragment.newInstance(), activity as AppCompatActivity)
+          //  FragmentManager.setFragment(DaysFragment.newInstance(), activity as AppCompatActivity)
         }
     }
 
