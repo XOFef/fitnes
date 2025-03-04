@@ -5,15 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.databinding.FragmentTrainingBinding
+import com.example.myapplication.training.ui.DaysViewModel
 import com.example.myapplication.training.ui.adapters.VpAdapter
 import com.example.myapplication.training.utils.TrainingUtils
 import com.google.android.material.tabs.TabLayoutMediator
 
 
 class TrainingFragment : Fragment() {
+    private val diffList = listOf(
+        "easy",
+        "middle",
+        "hard"
+    )
     private lateinit var binding: FragmentTrainingBinding
+    private val model: DaysViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -34,6 +42,7 @@ class TrainingFragment : Fragment() {
         binding.vp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                model.getExerciseDaysByDifficult(diffList[position])
             }
         })
     }

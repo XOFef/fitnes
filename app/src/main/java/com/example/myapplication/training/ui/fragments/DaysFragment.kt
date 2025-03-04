@@ -3,9 +3,6 @@ package com.example.myapplication.training.ui.fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
@@ -15,12 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.db.DayModel
 import com.example.myapplication.adapters.DaysAdapter
-import com.example.myapplication.db.ExerciseModel
 import com.example.myapplication.databinding.FragmentDaysBinding
-import com.example.myapplication.fragments.ExerciseListFragment
-import com.example.myapplication.training.utils.TrainingUtils
-import com.example.myapplication.utils.FragmentManager
-import com.example.myapplication.utils.MainViewModel
+import com.example.myapplication.training.ui.DaysViewModel
 import com.example.myapplication.utils.dialogManager
 
 
@@ -28,7 +21,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
     private lateinit var adapter: DaysAdapter
     private lateinit var binding: FragmentDaysBinding
     private var ab: ActionBar? = null
-    private val model: MainViewModel by activityViewModels()
+    private val model: DaysViewModel by activityViewModels()
 
 
 
@@ -54,45 +47,36 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
         rcViewDays.adapter = adapter
     }
 
-
-
-
-
-
-
-    companion object {
-        @JvmStatic
-        fun newInstance(difficulty: String) = DaysFragment().apply {
-            arguments = Bundle().apply {
-                putString(TrainingUtils.toString(), difficulty)
-            }
+    private fun updateAdapter(){
+        model.daysList.observe(viewLifecycleOwner){ list ->
+            adapter.submitList(list)
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateAdapter()
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(s: String) = DaysFragment()
+    }
+
     override fun onClick(day: DayModel) {
-        if (!day.isDone) {
-            fillExerciseList(day)
-            model.currentDay = day.dayNumber
-            FragmentManager.setFragment(
-                ExerciseListFragment.newInstance(),
-                activity as AppCompatActivity
-            )
-        } else {
+        if (day.isDone) {
             dialogManager.showDialog(
                 activity as AppCompatActivity,
                 R.string.reset_day_message,
                 object : dialogManager.Listener {
                     override fun onClick() {
-                        model.savePref(day.dayNumber.toString(), 0)
-                        fillExerciseList(day)
-                        model.currentDay = day.dayNumber
-                        FragmentManager.setFragment(
-                            ExerciseListFragment.newInstance(),
-                            activity as AppCompatActivity
-                        )
+
+
                     }
                 }
             )
+        } else{
+
         }
     }
 }
