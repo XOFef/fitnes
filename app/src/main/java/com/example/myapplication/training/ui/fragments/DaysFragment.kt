@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.db.DayModel
@@ -44,6 +45,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
     private fun initRcView() = with(binding) {
         adapter = DaysAdapter(this@DaysFragment)
         rcViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)
+        rcViewDays.itemAnimator = null
         rcViewDays.adapter = adapter
     }
 
@@ -76,7 +78,14 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
                 }
             )
         } else{
-
+            openExerciseListFragment(day)
         }
+    }
+
+    private fun openExerciseListFragment(day: DayModel){
+        val bundle = Bundle().apply {
+            putSerializable("day", day)
+        }
+        findNavController().navigate(R.id.action_trainingFragment_to_exerciseListFragment, bundle)
     }
 }

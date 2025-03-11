@@ -20,7 +20,7 @@ class ExerciseAdapter() :
             tvName2.text = exercise.name
             tvCount.text = exercise.time
             imEx.setImageDrawable(GifDrawable(root.context.assets, exercise.image))
-            chB.isChecked = exercise.isDone
+            checkBoxImage.visibility = if(exercise.isDone) View.VISIBLE else View.INVISIBLE
         }
     }
 

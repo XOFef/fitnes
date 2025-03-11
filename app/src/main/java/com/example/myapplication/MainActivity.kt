@@ -17,12 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        model.pref = getSharedPreferences("main", MODE_PRIVATE)
-        FragmentManager.setFragment(TrainingFragment(), this)
+
     }
 
-    override fun onBackPressed() {
-        if (FragmentManager.currentFragment is DaysFragment) super.onBackPressed()
-       //  else FragmentManager.setFragment(DaysFragment.newInstance(), this)
-    }
 }

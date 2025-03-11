@@ -1,5 +1,6 @@
-package com.example.myapplication.fragments
+package com.example.myapplication.exercises.ui.fragments
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,16 +13,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adapters.ExerciseAdapter
 import com.example.myapplication.databinding.ExercisesListFragmentBinding
+import com.example.myapplication.db.DayModel
+import com.example.myapplication.exercises.ui.ExerciseListViewModel
+import com.example.myapplication.fragments.WaitingFragment
 import com.example.myapplication.utils.FragmentManager
 import com.example.myapplication.utils.MainViewModel
 
 
 class ExerciseListFragment : Fragment() {
 
+    private var dayModel: DayModel? = null
     private lateinit var binding: ExercisesListFragmentBinding
     private lateinit var adapter: ExerciseAdapter
     private var ab: ActionBar? = null
-    private val model: MainViewModel by activityViewModels()
+    private val model: ExerciseListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,16 +38,22 @@ class ExerciseListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dayModel = getDayFromArguments()
         init()
-        model.mutableListExercise.observe(viewLifecycleOwner) {
-            for (i in 0 until model.getExerciseCount()) {
-                it[i] = it[i].copy(isDone = true)
-            }
-            adapter.submitList(it)
-        }
-
+        exerciseListObserver()
+        dayModel =getDayFromArguments()
+        model.getDayExerciseList(dayModel)
     }
 
+    private fun getDayFromArguments(): DayModel?{
+        return arguments.let{ bundle ->
+            if(Build.VERSION.SDK_INT >= 33){
+                bundle?.getSerializable("day", DayModel::class.java)
+            } else{
+                bundle?.getSerializable("day") as DayModel
+            }
+        }
+    }
 
     private fun init() = with(binding) {
         ab = (activity as AppCompatActivity).supportActionBar
@@ -58,9 +69,10 @@ class ExerciseListFragment : Fragment() {
         }
     }
 
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = ExerciseListFragment()
+    private fun exerciseListObserver(){
+        model.exerciseList.observe(viewLifecycleOwner){ list ->
+            adapter.submitList(list)
+        }
     }
+
 }

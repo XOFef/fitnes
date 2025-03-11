@@ -21,7 +21,7 @@ class DaysAdapter(var listener: Listener) :
             val exCounter =
                 day.exercises.split(",").size.toString() + " " + root.context.getString(R.string.exercise)
             tvExCounter.text = exCounter
-            checkBox.isChecked = day.isDone
+            checkBoxImage.visibility = if(day.isDone) View.VISIBLE else View.INVISIBLE
             itemView.setOnClickListener { listener.onClick(day.copy(dayNumber = adapterPosition + 1)) }
         }
     }

@@ -2,6 +2,7 @@ package com.example.myapplication.db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "day_model_table")
 data class DayModel(
@@ -12,4 +13,4 @@ data class DayModel(
     var dayNumber: Int,
     var doneExerciseCounter: Int,
     var isDone: Boolean
-)
+): Serializable
