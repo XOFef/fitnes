@@ -23,21 +23,21 @@ object TrainingUtils {
     val topCardList = listOf(
         TrainingTopCardModel(
             R.drawable.one,
-            "",
+            R.string.easy,
             0,
             0,
             "easy"
         ),
         TrainingTopCardModel(
             R.drawable.two,
-            "",
+            R.string.middle,
             0,
             0,
             "middle"
         ),
         TrainingTopCardModel(
             R.drawable.tree,
-            "",
+            R.string.hard,
             0,
             0,
             "hard"

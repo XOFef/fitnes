@@ -46,9 +46,7 @@ class TrainingFragment : Fragment() {
         binding.vp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                model.getExerciseDaysByDifficult(TrainingUtils.topCardList[position].copy(
-                    difficultyTitle = getString(TrainingUtils.tabTitle[position])
-                ))
+                model.getExerciseDaysByDifficult(TrainingUtils.topCardList[position])
             }
         })
     }
@@ -59,7 +57,7 @@ class TrainingFragment : Fragment() {
             alphaAnimation.duration = 700
             im.setImageResource(card.imageId)
             im.startAnimation(alphaAnimation)
-            difficultyTitle.text = card.difficultyTitle
+            difficultyTitle.setText(card.difficultyTitle)
             pB.max = card.maxProgress
             animProgressBar(card.maxProgress - card.progress)
             val daysRestText = getString(R.string.rest) + " " + card.progress

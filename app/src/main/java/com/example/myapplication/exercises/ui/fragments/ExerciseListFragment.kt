@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
@@ -39,6 +40,7 @@ class ExerciseListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dayModel = getDayFromArguments()
+        topCardObserver()
         init()
         exerciseListObserver()
         dayModel =getDayFromArguments()
@@ -72,6 +74,24 @@ class ExerciseListFragment : Fragment() {
     private fun exerciseListObserver(){
         model.exerciseList.observe(viewLifecycleOwner){ list ->
             adapter.submitList(list)
+        }
+    }
+
+    private fun topCardObserver(){
+        model.topCardUpdata.observe(viewLifecycleOwner){ card ->
+            binding.apply {
+                val alphaAnimation = AlphaAnimation(0.2f, 1.0f)
+                alphaAnimation.duration = 700
+                im.setImageResource(card.imageId)
+                im.startAnimation(alphaAnimation)
+                val alphaAnimationText = AlphaAnimation(0.2f, 1.0f)
+                alphaAnimationText.startOffset = 300
+                alphaAnimationText.duration = 800
+
+                difficultyTitle.setText(card.difficultyTitle)
+                difficultyTitle.visibility = View.VISIBLE
+                difficultyTitle.startAnimation(alphaAnimationText)
+            }
         }
     }
 
