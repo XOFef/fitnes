@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.adapters.ExerciseAdapter
 import com.example.myapplication.databinding.WaitingFragmentBinding
+import com.example.myapplication.exercises.ui.fragments.ExercisesFragment
 import com.example.myapplication.utils.FragmentManager
 import com.example.myapplication.utils.TimeUtils
 

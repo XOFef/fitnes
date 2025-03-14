@@ -59,8 +59,8 @@ class TrainingFragment : Fragment() {
             im.startAnimation(alphaAnimation)
             difficultyTitle.setText(card.difficultyTitle)
             pB.max = card.maxProgress
-            animProgressBar(card.maxProgress - card.progress)
-            val daysRestText = getString(R.string.rest) + " " + card.progress
+            animProgressBar(card.progress)
+            val daysRestText = getString(R.string.rest) + " " + (card.maxProgress - card.progress)
             tvRestDays.text = daysRestText
         }
     }

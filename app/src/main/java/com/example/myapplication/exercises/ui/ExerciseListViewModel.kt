@@ -44,7 +44,10 @@ class ExerciseListViewModel @Inject constructor(
                 index = 2
             }
         }
-        topCardUpdata.value = TrainingUtils.topCardList[index]
+        topCardUpdata.value = TrainingUtils.topCardList[index].copy(
+            progress = dayModel.doneExerciseCounter,
+            maxProgress = dayModel.exercises.split(",").size
+        )
     }
 
 }

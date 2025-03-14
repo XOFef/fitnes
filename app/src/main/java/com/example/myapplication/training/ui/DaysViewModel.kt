@@ -36,6 +36,6 @@ class DaysViewModel @Inject constructor(
                 counter++
             }
         }
-        return list.size - counter
+        return counter
     }
 }

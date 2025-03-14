@@ -1,4 +1,4 @@
-package com.example.myapplication.fragments
+package com.example.myapplication.exercises.ui.fragments
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.myapplication.R
 import com.example.myapplication.db.ExerciseModel
 import com.example.myapplication.databinding.ExerciseBinding
+import com.example.myapplication.fragments.DayFinishFragment
 import com.example.myapplication.utils.FragmentManager
 import com.example.myapplication.utils.MainViewModel
 import com.example.myapplication.utils.TimeUtils

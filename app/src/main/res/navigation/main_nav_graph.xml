@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/exercisesFragment"
-        android:name="com.example.myapplication.fragments.ExercisesFragment"
+        android:name="com.example.myapplication.exercises.ui.fragments.ExercisesFragment"
         android:label="ExercisesFragment" />
     <fragment
         android:id="@+id/exerciseListFragment"

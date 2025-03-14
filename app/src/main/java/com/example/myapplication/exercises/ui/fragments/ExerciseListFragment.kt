@@ -1,5 +1,6 @@
 package com.example.myapplication.exercises.ui.fragments
 
+import android.animation.ObjectAnimator
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -84,15 +85,42 @@ class ExerciseListFragment : Fragment() {
                 alphaAnimation.duration = 700
                 im.setImageResource(card.imageId)
                 im.startAnimation(alphaAnimation)
-                val alphaAnimationText = AlphaAnimation(0.2f, 1.0f)
+
+                val alphaAnimationText = AlphaAnimation(0.0f, 1.0f)
                 alphaAnimationText.startOffset = 300
                 alphaAnimationText.duration = 800
-
                 difficultyTitle.setText(card.difficultyTitle)
                 difficultyTitle.visibility = View.VISIBLE
                 difficultyTitle.startAnimation(alphaAnimationText)
+
+                val alphaAnimationText2 = AlphaAnimation(0.0f, 1.0f)
+                alphaAnimationText2.startOffset = 600
+                alphaAnimationText2.duration = 800
+                val daysRest = card.maxProgress - card.progress
+                val tvRestText = getString(R.string.rest) + " " + daysRest
+                tvRestDays.text = if(daysRest==0){
+                    getText(R.string.done)
+                } else{
+                    tvRestText
+                }
+                pB.max = card.maxProgress
+                tvRestDays.visibility = View.VISIBLE
+                tvRestDays.startAnimation(alphaAnimationText2)
+                animProgressBar(card.progress)
             }
         }
     }
 
+    private fun animProgressBar(progress: Int){
+        val anim = ObjectAnimator.ofInt(
+            binding.pB,
+            "progress",
+            binding.pB.progress,
+            progress * 100
+        )
+        anim.startDelay = 900
+        anim.duration = 700
+        anim.start()
+
+    }
 }
