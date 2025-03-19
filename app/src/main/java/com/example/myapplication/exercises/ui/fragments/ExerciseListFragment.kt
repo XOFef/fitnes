@@ -11,6 +11,7 @@ import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adapters.ExerciseAdapter
@@ -20,6 +21,7 @@ import com.example.myapplication.exercises.ui.ExerciseListViewModel
 import com.example.myapplication.fragments.WaitingFragment
 import com.example.myapplication.utils.FragmentManager
 import com.example.myapplication.utils.MainViewModel
+import com.example.myapplication.utils.getDayFromArguments
 
 
 class ExerciseListFragment : Fragment() {
@@ -48,15 +50,7 @@ class ExerciseListFragment : Fragment() {
         model.getDayExerciseList(dayModel)
     }
 
-    private fun getDayFromArguments(): DayModel?{
-        return arguments.let{ bundle ->
-            if(Build.VERSION.SDK_INT >= 33){
-                bundle?.getSerializable("day", DayModel::class.java)
-            } else{
-                bundle?.getSerializable("day") as DayModel
-            }
-        }
-    }
+
 
     private fun init() = with(binding) {
         ab = (activity as AppCompatActivity).supportActionBar
@@ -65,10 +59,13 @@ class ExerciseListFragment : Fragment() {
         rcView.layoutManager = LinearLayoutManager(activity)
         rcView.adapter = adapter
         bStart.setOnClickListener {
-            FragmentManager.setFragment(
-                WaitingFragment.newInstance(),
-                activity as AppCompatActivity
-            )
+            val bundle = Bundle().apply {
+                putSerializable("day", dayModel)
+            }
+            findNavController().navigate(
+                R.id.action_exerciseListFragment_to_exercisesFragment,
+                bundle
+                )
         }
     }
 
